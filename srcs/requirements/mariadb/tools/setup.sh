@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start MariaDB
-docker-entrypoint.sh mysqld_safe &
+mysqld_safe &
 
 # Wait for MariaDB to start
 sleep 10s
