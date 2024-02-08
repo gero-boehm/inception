@@ -10,30 +10,32 @@ volumes:
       o: bind
       device: /home/${USER}/data/wordpress
 
-  mariadb:
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/${USER}/data/mariadb
+#   mariadb:
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /home/${USER}/data/mariadb
 
 services:
-  nginx:
-    container_name: nginx
-    image: nginx
-    restart: always
-    ports:
-      - 443:443
-    volumes:
-      - wordpress:/var/www/html
-    depends_on:
-      - wordpress
-    networks:
-      - inception
-    env_file:
-      - .env
+  # nginx:
+  #   container_name: nginx
+  #   image: nginx
+  #   restart: always
+  #   ports:
+  #     - 443:443
+  #   volumes:
+  #     - wordpress:/var/www/html
+  #   depends_on:
+  #     - wordpress
+  #   networks:
+  #     - inception
+  #   env_file:
+  #     - .env
 
   wordpress:
     container_name: wordpress
+    build:
+      context: ./requirements/wordpress
     image: wordpress
     restart: always
     volumes:
@@ -47,10 +49,12 @@ services:
 
   mariadb:
     container_name: mariadb
+    build:
+      context: ./requirements/mariadb
     image: mariadb
-    restart: always
-    volumes:
-      - mariadb:/var/lib/mariadb
+    # restart: always
+    # volumes:
+    #   - mariadb:/var/lib/mysql
     networks:
       - inception
     env_file:

@@ -10,3 +10,8 @@ mariadb:
 	docker build $(BUILD_ARGS) -t mariadb srcs/requirements/mariadb
 	docker run -itp 3306:3306 mariadb
 
+docker:
+	docker compose -f srcs/docker-compose.yml -p inception up --build -d --remove-orphans
+
+clean:
+	docker compose -f srcs/docker-compose.yml  -p inception down
