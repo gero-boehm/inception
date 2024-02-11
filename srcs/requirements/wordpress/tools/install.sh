@@ -1,6 +1,21 @@
 #!/bin/bash
 
-WP_URL=https://wordpress.org/latest.tar.gz
+WP_URL=https://wordpress.org/wordpress-6.4.3.tar.gz
+
+echo $WP_DIR
+echo $WP_URL
+echo $DB_HOST
+echo $DB_PORT
+echo $DB_USER
+echo $DB_PASS
+echo $DB_NAME
+echo $USER
+echo $WP_USER
+echo $WP_PASS
+echo $WP_MAIL
+echo $WP_USER2
+echo $WP_MAIL2
+echo $WP_PASS2
 
 while ! mysqladmin ping -h "$DB_HOST" -P"$DB_PORT" -u"$DB_USER" -p"$DB_PASS" --silent 2>/dev/null; do
 	echo "Waiting for MySQL to be ready..."
@@ -21,6 +36,8 @@ if ! wp core is-installed --allow-root 2>/dev/null; then
 	wp theme install twentytwentythree --activate --allow-root
 	echo "Configuring post url structure..."
 	wp rewrite structure '/%postname%/' --allow-root
+	echo "Creating other user..."
+	wp user create $WP_USER2 $WP_MAIL2 --user_pass=$WP_PASS2 --role=author --allow-root
 
 	chmod 755 "$WP_DIR"
 	chown -R www-data:www-data "$WP_DIR"
