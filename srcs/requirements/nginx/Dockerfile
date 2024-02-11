@@ -4,7 +4,7 @@ RUN apt update -y
 RUN apt install -y nginx openssl
 
 RUN mkdir -p /etc/nginx/ssl
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt -subj "/C=DE/ST=BW/L=Heilbronn/O=42Heilbronn/CN=www.${USER}.de"
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/nginx.key -out /etc/nginx/ssl/nginx.crt -subj "/C=DE/ST=BW/L=Heilbronn/O=42Heilbronn/CN=www.$USER.42.fr"
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 

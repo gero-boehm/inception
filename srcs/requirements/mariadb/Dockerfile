@@ -14,6 +14,4 @@ RUN chmod +x /tmp/setup.sh
 
 EXPOSE 3306
 
-# USER mysql
 ENTRYPOINT ["/tmp/setup.sh"]
-# CMD tail -f /dev/null
