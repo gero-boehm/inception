@@ -14,10 +14,4 @@ RUN chmod +x /tmp/install.sh
 RUN mkdir -p /var/www/html
 RUN mkdir -p /run/php
 
-# RUN chmod 755 /var/www/html
-# RUN chown -R www-data:www-data /var/www/html
-# RUN chmod -R 755 /run/php
-# RUN chown -R www-data:www-data /run/php
-# RUN chmod 660 /run/php/php7.4-fpm.sock
-
 ENTRYPOINT ["/tmp/install.sh"]
