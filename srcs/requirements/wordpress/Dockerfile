@@ -21,5 +21,3 @@ RUN mkdir -p /run/php
 # RUN chmod 660 /run/php/php7.4-fpm.sock
 
 ENTRYPOINT ["/tmp/install.sh"]
-
-# CMD tail -f /dev/null
