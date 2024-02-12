@@ -11,8 +11,8 @@ export
 # 	docker run -itp 3306:3306 mariadb
 
 all:
-	mkdir -p ${HOME}/data/mariadb
-	mkdir -p ${HOME}/data/wordpress
+	mkdir -p /home/gbohm/data/mariadb
+	mkdir -p /home/gbohm/data/wordpress
 	docker-compose -f srcs/docker-compose.yml -p inception up --build -d --remove-orphans
 
 clean:
@@ -20,8 +20,8 @@ clean:
 
 prune: clean
 	docker system prune -af
-	rm -rf ${HOME}/data/mariadb
-	rm -rf ${HOME}/data/wordpress
+	rm -rf /home/gbohm/data/mariadb
+	rm -rf /home/gbohm/data/wordpress
 
 re: clean all
 
