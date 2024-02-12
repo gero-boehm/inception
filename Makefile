@@ -18,7 +18,7 @@ all:
 clean:
 	docker-compose -f srcs/docker-compose.yml -p inception down --rmi all --volumes --remove-orphans
 
-prune:
+prune: clean
 	docker system prune -af
 
 re: clean all
