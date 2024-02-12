@@ -20,6 +20,8 @@ clean:
 
 prune: clean
 	docker system prune -af
+	rm -rf ${HOME}/data/mariadb
+	rm -rf ${HOME}/data/wordpress
 
 re: clean all
 
