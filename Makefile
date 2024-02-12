@@ -13,7 +13,7 @@ export
 all:
 	mkdir -p ${HOME}/data/mariadb
 	mkdir -p ${HOME}/data/wordpress
-	docker compose -f srcs/docker-compose.yml -p inception up --build -d --remove-orphans
+	docker-compose -f srcs/docker-compose.yml -p inception up --build -d --remove-orphans
 
 clean:
 	docker-compose -f srcs/docker-compose.yml -p inception down --rmi all --volumes --remove-orphans
